@@ -210,6 +210,20 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- [[ Custom Keymaps ]]
+-- Open a terminal in a bottom split
+vim.keymap.set('n', '<leader>tt', function()
+  -- Open horizontal split at the bottom
+  vim.cmd 'botright split'
+
+  -- Give it a reasonable height
+  vim.cmd 'resize 15'
+
+  -- Start a terminal
+  vim.cmd 'terminal'
+  vim.cmd 'startinsert'
+end, { desc = 'Open terminal in bottom split' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -982,7 +996,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -1019,5 +1033,3 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
-require 'custom'
